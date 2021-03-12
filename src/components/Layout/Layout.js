@@ -3,9 +3,9 @@ import Aux from "../hoc/Aux1";
 import classes from './Layout.module.css';
 const layout=(props)=>(
         <Aux>
-            <div>
+            {/*<div>
                 Toolbar,SideDrawer,BackDrop
-            </div>
+            </div>*/}
             <main className={classes.Content}>
                 {props.children}
             </main>
