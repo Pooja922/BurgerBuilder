@@ -1,8 +1,8 @@
 .Order{
     width:80%;
-    border:1px solid #eee;
+    border: 1px solid #40A4C8;
     box-shadow: 0 2px 3px #ccc;
     padding: 10px;
-    margin: 10px auto;
+    margin: 30px auto;
     box-sizing:border-box;
 }
