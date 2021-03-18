@@ -13,7 +13,6 @@ import * as actionTypes from "../../store/actions"
 
 class BurgerBuilder extends Component{
     state={
-        purchasable:false,
         purchasing:false,
         loading:false,
         error:false
@@ -29,7 +28,7 @@ class BurgerBuilder extends Component{
             })*/
     }
 
-    updatePurchaseState(ingredients){
+    updatePurchaseState(ingredients){                                   //Without Redux
         const sum=Object.keys(ingredients)
             .map(igKey =>{
                 return ingredients[igKey]
@@ -37,7 +36,7 @@ class BurgerBuilder extends Component{
             .reduce((sum,el)=>{
                return sum+el
             },0)
-        this.setState({purchasable: sum>0})
+        return sum>0
     }
 
     /*addIngredientHandler=(type)=>{                                    //Without Redux
@@ -76,7 +75,7 @@ class BurgerBuilder extends Component{
     purchaseCancelHandler=()=>{
         this.setState({purchasing:false})
     }
-    purchaseContinueHandler=()=>{
+    /*purchaseContinueHandler=()=>{                                           //Without Redux
         //alert('You Continue');
         const queryParams=[];
         for(let i in this.state.ingredients){
@@ -87,7 +86,13 @@ class BurgerBuilder extends Component{
         this.props.history.push({
             pathname:'/checkout',
             search:'?'+queryString
-        })}
+        })}*/
+
+    purchaseContinueHandler=()=>{
+        console.log(this.props)
+
+        this.props.history.push('/checkout')
+        }
 
     render(){
         const disabledInfo={
@@ -108,7 +113,7 @@ class BurgerBuilder extends Component{
                         ingredientRemoved={this.props.onIngredientRemoved}
                         disabled={disabledInfo}
                         price={this.props.price}
-                        purchasable={this.state.purchasable}
+                        purchasable={this.updatePurchaseState(this.props.ings)}
                         ordered={this.purchaseHandler}/>
                 </Aux>
             )
