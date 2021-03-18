@@ -1,7 +1,6 @@
 import React, {Component } from "react";
 import Modal from "../../UI/Modal/Modal";
 import Aux from "../Aux1/Aux1";
-//import axios from "../../../axios-orders"
 
 const withErrorHandler=(WrappedComponent,axios)=>{
     return class extends Component{
@@ -10,7 +9,7 @@ const withErrorHandler=(WrappedComponent,axios)=>{
         }
         reqInterceptor;
         resInterceptor;
-        /*componentWillMount(){
+        componentWillMount(){
             this.reqInterceptor=axios.interceptors.request.use(req=>{
                 this.setState({error:null})
                 return req
@@ -23,7 +22,7 @@ const withErrorHandler=(WrappedComponent,axios)=>{
             console.log('Will unmount',this.reqInterceptor,this.resInterceptor)
             axios.interceptors.request.eject(this.reqInterceptor)
             axios.interceptors.response.eject(this.resInterceptor)
-        }*/
+        }
 
         errorConfirmedHandler=()=>{
             this.setState({error:null})
