@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes'                //import all constants from actionTypes.js file
+import {updateObject}  from "../utility"
 
 const initialState={
     ingredients:null,
@@ -16,12 +17,16 @@ const INGREDIENT_PRICES={
 const burgerBuilder=(state=initialState, action)=>{
     switch(action.type){
         case actionTypes.ADD_INGREDIENT:{
+            const updatedIngredient={
+                [action.ingredientName]:state.ingredients[action.ingredientName]+1
+            }
+            const updatedIngredients=updateObject(state.ingredients,updatedIngredient)
+            const updatedState={
+                
+            }
             return{
                 ...state,
-                ingredients:{
-                    ...state.ingredients,             //copy the original ingredients using spread operator
-                    [action.ingredientName]:state.ingredients[action.ingredientName]+1
-                },
+                ingredients:updatedIngredients,
                 totalPrice: state.totalPrice+INGREDIENT_PRICES[action.ingredientName]
             }
         }
@@ -44,6 +49,7 @@ const burgerBuilder=(state=initialState, action)=>{
         case actionTypes.FETCH_INGREDIENTS_FAILED:
             return{
                 ...state,
+                totalPrice: state.totalPrice,
                 error:true
             }
         default:
