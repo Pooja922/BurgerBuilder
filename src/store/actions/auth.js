@@ -38,12 +38,11 @@ export const auth=(email,password,isSignup)=>{
         axios.post(url,authData)
             .then(response=>{
                 console.log(response)
-                dispatch(authSuccess(response.data.idToken,response.data.localId))
+                dispatch(authSuccess(response.data.idToken,response.data.userId))
             })
 
             .catch(err=>{
-                console.log(err)
-                dispatch(authFail(err))
+                dispatch(authFail(err.response.data.error))
             })
     }
 }
