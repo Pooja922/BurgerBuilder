@@ -1,6 +1,5 @@
 import * as actionTypes from "./actionTypes"
 import axios from "../../axios-orders"
-import withErrorHandler from "../../components/hoc/withErrorHandler/withErrorHandler";
 
 export const purchaseBurgerSuccess=(id,orderData)=>{
     return{

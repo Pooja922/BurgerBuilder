@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import axios from '../../../axios-orders';
+import * as actions from '../../../store/actions/index';
+
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import classes from './ContactData.css';
-import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
-import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
-import * as actions from '../../../store/actions/index';
+import withErrorHandler from "../../../components/hoc/withErrorHandler/withErrorHandler"
+
+import classes from './ContactData.module.css';
 
 class ContactData extends Component {
     state = {
