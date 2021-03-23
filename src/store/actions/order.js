@@ -6,7 +6,7 @@ export const purchaseBurgerSuccess=(id,orderData)=>{
         type:actionTypes.PURCHASE_BURGER_SUCCESS,
         orderId:id,
         orderData:orderData,
-        purchased:true
+        //purchased:true
     }
 }
 export const purchaseBurgerFail=(error)=>{
@@ -23,12 +23,10 @@ export const purchaseBurgerStart=()=>{
 }
 
 export const purchaseBurger=(orderData,token)=>{
-    console.log(token)
     return dispatch=>{
         dispatch(purchaseBurgerStart())
         axios.post('/orders.json?auth='+token,orderData)
             .then(response=>{
-                console.log(response.data)
                 dispatch(purchaseBurgerSuccess(response.data.name,orderData))
             })
             .catch(error=>{

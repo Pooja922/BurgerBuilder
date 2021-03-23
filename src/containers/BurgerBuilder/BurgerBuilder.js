@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import { connect } from "react-redux"
+
 import Aux from "../../components/hoc/Aux1/Aux1";
 import Burger from "../../components/Burger/Burger"
 import BuildControls from "../../components/Burger/BuildControls/BuildControls"
@@ -6,7 +8,7 @@ import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../components/hoc/withErrorHandler/withErrorHandler";
-import { connect } from "react-redux"
+
 import * as actions from "../../store/actions/index"
 import axios from "../../axios-orders"
 
@@ -16,7 +18,6 @@ class BurgerBuilder extends Component{
         purchasing:false,
     }
     componentDidMount() {
-        console.log(this.props)
         this.props.onInitIngredients()
     }
 
@@ -88,7 +89,6 @@ class BurgerBuilder extends Component{
         })}*/
 
     purchaseContinueHandler=()=>{
-        console.log(this.props)
         this.props.onInitPurchase()
         this.props.history.push('/checkout')
         }

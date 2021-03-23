@@ -7,10 +7,6 @@ import * as actions from "../../store/actions/index"
 import Spinner from "../../components/UI/Spinner/Spinner"
 
 class Orders extends Component{
-    state={
-        orders:[],
-        loading:true
-    }
     componentDidMount() {
         this.props.onFetchOrders(this.props.token,this.props.userId)
     }
@@ -35,7 +31,7 @@ const mapStateToProps=state=>{
     return{
         orders:state.order.orders,
         loading:state.order.loading,
-        purchased: state.order.purchased,
+        //purchased: state.order.purchased,
         token:state.auth.token,
         userId:state.auth.userId
     }

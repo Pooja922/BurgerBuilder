@@ -7,7 +7,7 @@ const initialState={
     purchased:false
 }
 
-const purchaseBurgerStart=(state)=>{
+const purchaseBurgerStart=(state,action)=>{
     return updateObject(state,{
         loading: true
     })
@@ -24,19 +24,19 @@ const purchaseBurgerSuccess=(state,action)=>{
     })
 }
 
-const purchaseBurgerFail=(state)=>{
+const purchaseBurgerFail=(state,action)=>{
     return updateObject(state,{
         loading:false
     })
 }
 
-const purchaseInit=(state)=>{
+const purchaseInit=(state,action)=>{
     return updateObject(state,{
         purchased:false
     })
 }
 
-const fetchOrdersStart=(state)=>{
+const fetchOrdersStart=(state,action)=>{
     return updateObject(state,{
         loading:true
     })
@@ -49,7 +49,7 @@ const fetchOrdersSuccess=(state,action)=>{
     })
 }
 
-const fetchOrdersFail=(state)=>{
+const fetchOrdersFail=(state,action)=>{
     return updateObject(state,{
         loading:false
     })
@@ -58,19 +58,19 @@ const fetchOrdersFail=(state)=>{
 const reducer=(state=initialState,action)=>{
     switch(action.type){
         case actionTypes.PURCHASE_BURGER_START:
-            return purchaseBurgerStart(state)
+            return purchaseBurgerStart(state,action)
         case actionTypes.PURCHASE_BURGER_SUCCESS:
             return purchaseBurgerSuccess(state,action)
         case actionTypes.PURCHASE_BURGER_FAIL:
-            return purchaseBurgerFail(state)
+            return purchaseBurgerFail(state,action)
         case actionTypes.PURCHASE_INIT:
-            return purchaseInit(state)
+            return purchaseInit(state,action)
         case actionTypes.FETCH_ORDERS_START:
-            return fetchOrdersStart(state)
+            return fetchOrdersStart(state,action)
         case actionTypes.FETCH_ORDERS_SUCCESS:
             return fetchOrdersSuccess(state,action)
         case actionTypes.FETCH_ORDERS_FAIL:
-            return fetchOrdersFail(state)
+            return fetchOrdersFail(state,action)
         default:
             return state
     }

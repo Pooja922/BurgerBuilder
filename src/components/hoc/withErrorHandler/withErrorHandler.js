@@ -10,7 +10,7 @@ const withErrorHandler=(WrappedComponent,axios)=>{
         }
         reqInterceptor;
         resInterceptor;
-        componentWillMount(){
+        componentDidMount(){
             this.reqInterceptor=axios.interceptors.request.use(req=>{
                 this.setState({error:null})
                 return req
@@ -20,7 +20,6 @@ const withErrorHandler=(WrappedComponent,axios)=>{
             })
         }
         componentWillUnmount() {
-            console.log('Will unmount',this.reqInterceptor,this.resInterceptor)
             axios.interceptors.request.eject(this.reqInterceptor)
             axios.interceptors.response.eject(this.resInterceptor)
         }

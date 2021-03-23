@@ -7,6 +7,11 @@
     padding:10px;
     box-sizing: border-box;
 }
+.Auth>p{
+    color:red;
+    font-weight: bold;
+    font-size: larger;
+}
 @media(min-width: 600px){
     .Auth{
         width:500px;
