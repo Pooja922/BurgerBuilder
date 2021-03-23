@@ -12,14 +12,14 @@ class Orders extends Component{
         loading:true
     }
     componentDidMount() {
-        this.props.onFetchOrders(this.props.token)
+        this.props.onFetchOrders(this.props.token,this.props.userId)
     }
 
     render(){
         let orders=<Spinner/>
         if(!this.props.loading){
             orders=this.props.orders.map(order=>(
-                <Order key={order.id} ingredients={order.ingredients} price={order.price}/>
+                <Order key={order.id} ingredients={order.ingredients} price={order.price} userId={order.userId}/>
             ))
         }
         return(
@@ -36,14 +36,14 @@ const mapStateToProps=state=>{
         orders:state.order.orders,
         loading:state.order.loading,
         purchased: state.order.purchased,
-        token:state.auth.token
-
+        token:state.auth.token,
+        userId:state.auth.userId
     }
 }
 
 const mapDispatchToProps=dispatch=>{
     return{
-        onFetchOrders:(token)=>dispatch(actions.fetchOrders(token))
+        onFetchOrders:(token,userId)=>dispatch(actions.fetchOrders(token,userId))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(Orders,axios))
