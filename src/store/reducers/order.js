@@ -7,7 +7,7 @@ const initialState={
     purchased:false
 }
 
-const purchaseBurgerStart=(state,action)=>{
+const purchaseBurgerStart=(state)=>{
     return updateObject(state,{
         loading: true
     })
@@ -15,7 +15,7 @@ const purchaseBurgerStart=(state,action)=>{
 
 const purchaseBurgerSuccess=(state,action)=>{
     const newOrder=updateObject(action.orderData,{
-        id:action.order.id
+        id:action.orderId
     })
     return updateObject(state,{
         loading:false,
@@ -24,19 +24,19 @@ const purchaseBurgerSuccess=(state,action)=>{
     })
 }
 
-const purchaseBurgerFail=(state,action)=>{
+const purchaseBurgerFail=(state)=>{
     return updateObject(state,{
         loading:false
     })
 }
 
-const purchaseInit=(state,action)=>{
+const purchaseInit=(state)=>{
     return updateObject(state,{
         purchased:false
     })
 }
 
-const fetchOrdersStart=(state,action)=>{
+const fetchOrdersStart=(state)=>{
     return updateObject(state,{
         loading:true
     })
@@ -49,7 +49,7 @@ const fetchOrdersSuccess=(state,action)=>{
     })
 }
 
-const fetchOrdersFail=(state,action)=>{
+const fetchOrdersFail=(state)=>{
     return updateObject(state,{
         loading:false
     })
@@ -58,19 +58,19 @@ const fetchOrdersFail=(state,action)=>{
 const reducer=(state=initialState,action)=>{
     switch(action.type){
         case actionTypes.PURCHASE_BURGER_START:
-            return purchaseBurgerStart(state,action)
+            return purchaseBurgerStart(state)
         case actionTypes.PURCHASE_BURGER_SUCCESS:
             return purchaseBurgerSuccess(state,action)
         case actionTypes.PURCHASE_BURGER_FAIL:
-            return purchaseBurgerFail(state,action)
+            return purchaseBurgerFail(state)
         case actionTypes.PURCHASE_INIT:
-            return purchaseInit(state,action)
+            return purchaseInit(state)
         case actionTypes.FETCH_ORDERS_START:
-            return fetchOrdersStart(state,action)
+            return fetchOrdersStart(state)
         case actionTypes.FETCH_ORDERS_SUCCESS:
             return fetchOrdersSuccess(state,action)
         case actionTypes.FETCH_ORDERS_FAIL:
-            return fetchOrdersFail(state,action)
+            return fetchOrdersFail(state)
         default:
             return state
     }

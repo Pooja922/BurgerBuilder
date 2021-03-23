@@ -5,7 +5,8 @@ export const purchaseBurgerSuccess=(id,orderData)=>{
     return{
         type:actionTypes.PURCHASE_BURGER_SUCCESS,
         orderId:id,
-        orderData:orderData
+        orderData:orderData,
+        purchased:true
     }
 }
 export const purchaseBurgerFail=(error)=>{
@@ -17,8 +18,7 @@ export const purchaseBurgerFail=(error)=>{
 
 export const purchaseBurgerStart=()=>{
     return{
-        type:actionTypes.PURCHASE_BURGER_START,
-        purchased:true
+        type:actionTypes.PURCHASE_BURGER_START
     }
 }
 
