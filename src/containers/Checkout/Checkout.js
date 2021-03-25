@@ -1,11 +1,11 @@
-import React,{Component} from "react"
+import React from "react"
 import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
 import {Route,Redirect} from 'react-router-dom';
 import ContactData from "./ContactData/ContactData";
 import { connect } from "react-redux"
 //import * as actions from "../../store/actions/index"
 
-class Checkout extends Component{
+const Checkout=props=>{
     /*componentWillMount() {                                                //without Redux
         const query=new URLSearchParams(this.props.location.search);
         const ingredients={}
@@ -22,25 +22,24 @@ class Checkout extends Component{
         this.setState({ingredients:ingredients,totalPrice:price})
     }*/
 
-    checkoutCancelHandler=()=>{
-        this.props.history.goBack();
+    const checkoutCancelHandler=()=>{
+        props.history.goBack();
     }
-    checkoutContinuedHandler=()=>{
-        this.props.history.replace('/checkout/contact-data')
+    const checkoutContinuedHandler=()=>{
+        props.history.replace('/checkout/contact-data')
     }
-    render(){
         let summary=<Redirect to="/"/>
-        if(this.props.ings){
-            const purchasedRedirect=this.props.purchased? <Redirect to="/"/>:null;
+        if(props.ings){
+            const purchasedRedirect=props.purchased? <Redirect to="/"/>:null;
             summary=(
                 <div>
                     {purchasedRedirect}
                     <CheckoutSummary
-                        ingredients={this.props.ings}
-                        checkoutCancelled={this.checkoutCancelHandler}
-                        checkoutContinued={this.checkoutContinuedHandler}/>
+                        ingredients={props.ings}
+                        checkoutCancelled={checkoutCancelHandler}
+                        checkoutContinued={checkoutContinuedHandler}/>
                     <Route
-                        path={this.props.match.path + '/contact-data'}
+                        path={props.match.path + '/contact-data'}
                         component={ContactData}
                         /*render={                                                      //Without Redux
                             (props)=>(
@@ -54,7 +53,6 @@ class Checkout extends Component{
 
         }
         return summary
-    }
 }
 
 const mapStateToProps=state=>{
