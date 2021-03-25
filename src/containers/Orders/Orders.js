@@ -31,7 +31,6 @@ const mapStateToProps=state=>{
     return{
         orders:state.order.orders,
         loading:state.order.loading,
-        //purchased: state.order.purchased,
         token:state.auth.token,
         userId:state.auth.userId
     }
